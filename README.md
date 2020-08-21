@@ -106,6 +106,8 @@ This setting allows you to define your users
 
 The simple way to run the application is to build it as a docker image
 
+> You should be in the /src folder of the git repo to run this command
+
 ```
 docker build -f .\AdvanceEventGenerator\Dockerfile -t eventgen:latest .
 ```
