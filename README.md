@@ -104,7 +104,24 @@ This setting allows you to define your users
 
 ## Running in docker
 
-The simple way to run the application is to build it as a docker image
+The simple way to run the application is to run it as a docker image
+
+> You must override the default URI
+
+```
+docker run -it -e BootConfig__Boot__DefaultUri='http://192.168.43.101:8080/grosvenor-oem' grosvenortechnology/advance-event-generator
+```
+
+To supply your configuration of users and devices you can use a volume mount to inject the configuration.
+Using this method, you can remove the device and user config from the `appsettings.json` file and
+create separate `users.json` and `devices.json` files.  You can then use a volume mount to pass these
+to the docker container.  In this example my files are in `c:\tmp\config`
+
+```
+docker run -it -v c:\tmp\config:/config -e BootConfig__Boot__DefaultUri='http://192.168.43.101:8080/grosvenor-oem' grosvenortechnology/advance-event-generator
+```
+
+### Building docker image
 
 > You should be in the /src folder of the git repo to run this command
 
@@ -117,12 +134,3 @@ You can then run with the command
 ```
 docker run -it eventgen:latest
 ```
-
-Using this method, you can remove the device and user config from the `appsettings.json` file and
-create separate `users.json` and `devices.json` files.  You can then use a volume mount to pass these
-to the docker container
-
-```
-docker run -it -v c:\tmp\config:/config eventgen:latest
-```
-
