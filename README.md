@@ -10,6 +10,8 @@ runner will then randomly send a mix of the defined users to the Portals for eac
 Use this section to set the base url for sending events, the default `device/{deviceSerial}/events` path will
 be appended to the default URI.  You can change this behavior in the worker.cs SendMessage function.
 
+> You must change the DefaultUri to match your configuration
+
 ```json
 {
    "BootConfig": {
